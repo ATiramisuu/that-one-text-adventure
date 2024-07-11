@@ -1,0 +1,26 @@
+
+** The year is 1874 **
+
+
+Welcome to the Davenport pier!
+
+1. Explore the town
+2. Shop for supplies
+3. Set out for the seas
+
+
+A small port settlement, beautiful views on the west side of the town and new buildings are popping up
+The seas are covered in clouds but the town itself is sunny and seems to be bustling with activity
+You are on the pier, to the left is the general store, a repair shop, an
+old man who is currently fishing
+
+
+
+
+
+You head towards the stores
+Where would you like to go?
+
+1. General store
+2. Repair shop
+3. Old fisherman
