@@ -1,0 +1,8 @@
+{
+    "balance": 500,
+    "items": [
+        {"name": "rum", "price": 15, "amount": 0},
+        {"name": "bread", "price": 5, "amount": 0},
+        {"name": "rope", "price": 20, "amount": 0}
+    ]
+}
