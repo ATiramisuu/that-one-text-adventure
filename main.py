@@ -18,12 +18,12 @@ def main():
         game_state = saveProgress.load_game()
 
         try:
-            option = int(input("Select option to start: "))
+            option = input("Select option to start: ")
         except ValueError:  # If we get a ValueError from invalid input
             print("Invalid input. Please enter a number between 1 and 3.")
             continue
 
-        if option == 1:  # We want to start a new game
+        if option == "1":  # We want to start a new game
             if game_state:  # Check if there is existing save data
                 wipe = input("Existing save data found. Do you want to wipe the data and start over? (yes/no): ").strip().lower()
                 if wipe == "yes":
@@ -38,7 +38,7 @@ def main():
                 firstArea.startGame()
                 break  # Exit the while loop
 
-        elif option == 2:  # We want to continue our game
+        elif option == "2":  # We want to continue our game
             if not game_state:  # We haven't started a new game yet or save file is empty
                 print("You haven't started a new game or no save data found! Please start a new game first.")
             else:  # We have already started a new game
@@ -47,7 +47,7 @@ def main():
                 firstArea.continueArea(game_state)
                 break  # Exit the while loop
 
-        elif option == 3:  # We want to exit the program
+        elif option == "3":  # We want to exit the program
             print("Exiting the program now")
             exit(1)
 
