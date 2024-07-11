@@ -1,0 +1,7 @@
+{
+    "items": [
+        {"name": "rum", "price": 15, "amount": 24},
+        {"name": "bread", "price": 5, "amount": 50},
+        {"name": "rope", "price": 20, "amount": 10}
+    ]
+}
