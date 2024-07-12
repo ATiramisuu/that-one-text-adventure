@@ -93,12 +93,12 @@ def shop_for_supplies():
                     if amount <= 0:
                         print("Invalid amount. Please enter a positive number.")
                         continue
-                    
+
                     # check if the user wants more than is currently in stock
                     if amount > itemFound["amount"]:
                         print("Sorry, we only have " + str(itemFound["amount"]) + " of " + itemName + " in stock.")
                         continue
-                
+
                 except ValueError:
                     print("Invalid input. Please enter a valid number.")
                     continue
@@ -121,10 +121,24 @@ def shop_for_supplies():
                                 itemNameInShip = ship_item
                                 break
 
+                        # if itemNameInShip:  # if we can find that item type in our ship inventory
+                        #     itemNameInShip["amount"] += amount  # we add the amount to the existing amount
+                        # else:  # if the item is not found, add it to the ship inventory
+                        #     shipInventory["items"].append({"name": itemName, "amount": amount})
+                        
                         if itemNameInShip:  # if we can find that item type in our ship inventory
                             itemNameInShip["amount"] += amount  # we add the amount to the existing amount
                         else:  # if the item is not found, add it to the ship inventory
-                            shipInventory["items"].append({"name": itemName, "amount": amount})
+                            # Find the item in the store inventory to get its price
+                            storeItem = next((item for item in storeInventory["items"] if item["name"].lower() == itemName), None)
+                            if storeItem:
+                                shipInventory["items"].append({
+                                    "name": itemName,
+                                    "price": storeItem["price"],
+                                    "amount": amount
+                                })
+                            else:
+                                print(f"Error: Item {itemName} not found in store inventory.")
 
                         itemFound["amount"] -= amount # update store inventory
                         shipInventory["balance"] -= totalCost # update balance
@@ -151,4 +165,3 @@ def shop_for_supplies():
 
             else:  # otherwise, invalid input
                 print("Invalid input! Please enter a valid item name.")
-
