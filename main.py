@@ -27,14 +27,23 @@ def main():
             if game_state:  # Check if there is existing save data
                 wipe = input("Existing save data found. Do you want to wipe the data and start over? (yes/no): ").strip().lower()
                 if wipe == "yes":
-                    os.remove("saveData.txt")
-                    print("Save data wiped. Starting a new game!")
-                    firstArea.startGame()
-                    break # Exit the while loop
+                    try:     
+                        os.remove("saveData.txt")
+                        saveProgress.reset_json_files()  # Reset JSON files
+                        print("Save data wiped and inventories reset. Starting a new game!")
+                        firstArea.startGame()
+                        break # Exit the while loop
+                        
+                    except FileNotFoundError: 
+                        print("No save file found. Starting a new game!")
+                        saveProgress.reset_json_files()  # Reset JSON files anyway
+                        firstArea.startGame()
+                        break
                 else:
                     print("Okay, going back to the main menu now.")  # you'll get booted back out to the main menu
             else:
                 print("Starting a new game!")  # This starts a new game
+                saveProgress.reset_json_files()  # Reset JSON files for a new game
                 firstArea.startGame()
                 break  # Exit the while loop
 
